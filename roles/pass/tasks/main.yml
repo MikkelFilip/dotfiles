@@ -31,7 +31,7 @@
 - name: "Pass | Import gpg private key"
   ansible.builtin.shell: 
     cmd: "gpg --batch
-      --passphrase {{ gpg_passphrase }}
+      --passphrase {{ pass.gpg_passphrase }}
       --pinentry-mode loopback
       --import {{ ansible_user_dir }}/.pass-keys/private.gpg"
   changed_when: false

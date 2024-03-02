@@ -51,10 +51,15 @@
     scope: global
     value: 'store'
 
+- name: "Git | Create ~/.git-credentials"
+  file:
+    path: "{{ ansible_user_dir }}/.git-credentials"
+    state: touch
 
-- name: "Git | Configure ~/.git-credentials"
-  ansible.builtin.copy:
-    src: .git-credentials
+- name: "Git | Populate ~/.git-credentials"
+  copy:
     dest: "{{ ansible_user_dir }}/.git-credentials"
-    mode: "0600"
+    content: |
+      {{ git_credentials }}
+  no_log: true
 

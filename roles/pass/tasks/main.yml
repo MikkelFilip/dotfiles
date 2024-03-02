@@ -1,0 +1,37 @@
+---
+- name: "Pass | {{ ansible_distribution }} | Install"
+  ansible.builtin.apt:
+    name: neovim
+    state: present
+  become: true
+
+- name: "Pass | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+
+- name: "Pass | Copy pass store"
+  ansible.builtin.git:
+    repo: https://github.com/{{ git_user_name }}/pass-store.git
+    dest: ~/.password-store
+
+- name: "Pass | Copy keys"
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/"
+    dest: "{{ ansible_user_dir }}/.pass-keys/"
+    directory_mode: "0755"
+    mode: "0644"
+    force: true
+
+- name: "Pass | Import gpg public key"
+  ansible.builtin.shell: 
+    cmd: "gpg --batch
+      --pinentry-mode loopback
+      --import {{ ansible_user_dir }}/.pass-keys/public.gpg"
+  changed_when: false
+
+- name: "Pass | Import gpg private key"
+  ansible.builtin.shell: 
+    cmd: "gpg --batch
+      --passphrase {{ gpg_passphrase }}
+      --pinentry-mode loopback
+      --import {{ ansible_user_dir }}/.pass-keys/private.gpg"
+  changed_when: false

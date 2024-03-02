@@ -1,0 +1,5 @@
+- name: "Pass | {{ ansible_distribution }} | Install"
+  ansible.builtin.apt:
+    name: pass
+    state: present
+  become: true

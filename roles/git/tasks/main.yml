@@ -55,6 +55,7 @@
   file:
     path: "{{ ansible_user_dir }}/.git-credentials"
     state: touch
+  changed_when: false
 
 - name: "Git | Populate ~/.git-credentials"
   copy:

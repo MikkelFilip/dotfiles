@@ -9,11 +9,12 @@
       - unzip
       - ansible-lint
       - ripgrep
+      - libfuse2
     state: present
   become: true
 
-- name: "Neovim | {{ ansible_distribution }} | Install"
-  ansible.builtin.apt:
-    name: neovim
-    state: present
-  become: true
+# - name: "Neovim | {{ ansible_distribution }} | Install"
+#   ansible.builtin.apt:
+#     name: neovim
+#     state: present
+#   become: true

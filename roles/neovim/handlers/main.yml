@@ -1,0 +1,5 @@
+- name: Remove downloaded Neovim AppImage
+  ansible.builtin.file:
+    path: /tmp/nvim.appimage
+    state: absent
+  become: true

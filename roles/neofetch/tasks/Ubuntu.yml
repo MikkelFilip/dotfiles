@@ -3,4 +3,5 @@
   ansible.builtin.apt:
     name: neofetch
     state: present
+    update_cache: true
   become: true

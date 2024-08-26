@@ -75,10 +75,14 @@ OMB_USE_SUDO=true
 completions=(
   docker
   git
+  gh
   go
+  helm
   kubectl
   ssh
   system
+  terraform
+  kubectl
   tmux
   vault
 )
@@ -92,6 +96,7 @@ aliases=(
   general
   ls
   misc
+  terraform
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -107,6 +112,7 @@ plugins=(
   kubectl
   progress
   xterm
+  zoxide
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -165,6 +171,5 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -z "$TMUX" ]]; then
   if command -v neofetch &> /dev/null; then neofetch; fi
 fi
-
-toilet "Mikkel F. Jensen" -F border:gay -f future
+#toilet "TechDufus" -F border:gay -f emboss2
 

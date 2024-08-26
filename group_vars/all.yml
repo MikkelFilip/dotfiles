@@ -13,7 +13,6 @@ default_roles:
   - btop
   - bat
   - tldr
-  - python
   - tmux
 
 git_user_name: "MikkelFilip"

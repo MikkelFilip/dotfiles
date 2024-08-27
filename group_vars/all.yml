@@ -14,6 +14,7 @@ default_roles:
   - bat
   - tldr
   - tmux
+  - zoxide
 
 git_user_name: "MikkelFilip"
 git_user_email: !vault |

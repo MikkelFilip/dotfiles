@@ -1,0 +1,5 @@
+- name: Remove downloaded Font Archive
+  ansible.builtin.file:
+    path: /tmp/Hack.zip
+    state: absent
+  become: true

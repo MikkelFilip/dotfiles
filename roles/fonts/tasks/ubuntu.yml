@@ -1,7 +1,18 @@
 ---
-- name: "Fonts | Install"
-  ansible.builtin.apt:
-    name:
-      - fonts-powerline
-    state: present
-  become: true
+- name: "Fonts | Download Hack Nerd Font"
+  ansible.builtin.get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
+    dest: /tmp/Hack.zip
+  notify:
+    - Remove downloaded Font Archive
+
+- name: "Fonts | Hack Nerd Font folder"
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/.local/share/fonts/Hack"
+    state: directory
+
+- name: "Fonts | Unpack Hack Nerd Font"
+  unarchive:
+    src: /tmp/Hack.zip
+    dest: "{{ ansible_user_dir }}/.local/share/fonts/Hack"

@@ -10,6 +10,7 @@
       - ansible-lint
       - ripgrep
       - libfuse2
+      - fd-find
     state: present
   become: true
 

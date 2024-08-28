@@ -51,6 +51,30 @@
     scope: global
     value: 'store'
 
+- name: "Git | Alias | Remove remote deleted branches"
+  community.general.git_config:
+    name: alias.gone
+    scope: global
+    value: "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
+
+- name: "Git | Alias | Ignore files"
+  community.general.git_config:
+    name: alias.ignore
+    scope: global
+    value: update-index --assume-unchanged
+
+- name: "Git | Alias | Unignore files"
+  community.general.git_config:
+    name: alias.unignore
+    scope: global
+    value: update-index --no-assume-unchanged
+
+- name: "Git | Alias | List ignored files"
+  community.general.git_config:
+    name: alias.ignored
+    scope: global
+    value: '!git ls-files -v | grep "^[[:lower:]]"'
+
 - name: "Git | Create ~/.git-credentials"
   file:
     path: "{{ ansible_user_dir }}/.git-credentials"

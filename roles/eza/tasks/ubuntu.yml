@@ -1,0 +1,7 @@
+---
+- name: "EZA | {{ ansible_distribrution }} | Install eza"
+  ansible.builtin.apt:
+    name:
+      - eza
+    state: present
+  become: true

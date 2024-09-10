@@ -1,0 +1,6 @@
+---
+- name: Remove downloaded EZA Archive
+  ansible.builtin.file:
+    path: /tmp/eza.zip
+    state: absent
+  become: true

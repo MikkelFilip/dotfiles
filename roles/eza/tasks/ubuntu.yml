@@ -1,7 +1,16 @@
 ---
-- name: "EZA | {{ ansible_distribrution }} | Install eza"
-  ansible.builtin.apt:
-    name:
-      - eza
-    state: present
+- name: "EZA | {{ ansible_distribrution }} | Download EZA zip"
+  ansible.builtin.get_url:
+    url: https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.zip
+    dest: /tmp/eza.zip
+  notify:
+    - Remove downloaded EZA Archive
+
+- name: "EZA | {{ ansible_distribrution }} | Unpack EZA"
+  unarchive:
+    mode: "0755"
+    owner: "{{ host_user }}"
+    group: "{{ host_user }}"
+    src: /tmp/eza.zip
+    dest: "/usr/local/bin"
   become: true

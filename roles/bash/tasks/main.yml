@@ -29,14 +29,16 @@
         cmd: /{{ ansible_user_dir }}/oh-my-bash.install.sh
 
 - name: "Bash | Copy .bashrc"
-  ansible.builtin.copy:
-    src: ".bashrc"
-    dest: "{{ ansible_user_dir }}/.bashrc"
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/.bashrc"
+    path: "{{ ansible_user_dir }}/.bashrc"
     mode: "0644"
 
 - name: "Bash | Copy .profile"
-  ansible.builtin.copy:
-    src: ".profile"
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/.profile"
     dest: "{{ ansible_user_dir }}/.profile"
     mode: "0644"
 

@@ -1,0 +1,7 @@
+---
+- name: "Speedtest | {{ ansible_distribution }} | Install Speedtest"
+  ansible.builtin.apt:
+    name:
+      - speedtest-cli
+    state: present
+  become: true

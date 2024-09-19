@@ -51,6 +51,18 @@
     scope: global
     value: 'store'
 
+- name: "Git | Set autoSetupRemote"
+  community.general.git_config:
+    name: push.autoSetupRemote
+    scope: global
+    value: 'true'
+
+- name: "Git | Set undo"
+  community.general.git_config:
+    name: alias.undo
+    scope: global
+    value: 'reset --soft HEAD^'
+
 - name: "Git | Alias | Remove remote deleted branches"
   community.general.git_config:
     name: alias.gone

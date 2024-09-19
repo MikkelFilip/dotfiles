@@ -1,6 +1,6 @@
 # Enable the subsequent settings only in interactive sessions
 case $- in
-  *i*) ;;
+*i*) ;;
     *) return;;
 esac
 
@@ -150,15 +150,14 @@ for file in $HOME/.config/bash/*.sh; do
 done
 
 [ -f ~/.bash_lumen ] && source ~/.bash_lumen
-[ -f ~/.fzf.bash ]   && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # # if neofetch exists, run it
 # if [[ -z "$TMUX" ]]; then
 #   if command -v neofetch &> /dev/null; then neofetch; fi
 # fi
 toilet "Mikkel F. Jensen" -F border:gay -f future
-

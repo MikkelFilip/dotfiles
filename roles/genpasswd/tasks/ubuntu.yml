@@ -1,0 +1,7 @@
+---
+- name: "Genpasswd | Copy genpasswd script into bin folder"
+  ansible.builtin.copy:
+    src: genpasswd
+    dest: /usr/bin/genpasswd
+    mode: "0655"
+  become: true

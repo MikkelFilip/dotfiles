@@ -4,6 +4,7 @@ default_roles:
   - eza
   - fonts
   - fzf
+  - genpasswd
   - git
   - lazygit
   - neofetch
